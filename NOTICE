@@ -1,0 +1,102 @@
+go-clp
+Copyright 2026 The go-clp authors
+
+This product includes software developed by the go-clp authors,
+licensed under the Apache License, Version 2.0 (see LICENSE).
+
+================================================================================
+EMBEDDED REFERENCE DATA
+================================================================================
+
+The reference datasets embedded in this module are NOT covered by the Apache
+License. They are reproduced under the Creative Commons Attribution 4.0
+International licence (CC BY 4.0) and remain the copyright of their owners.
+CC BY 4.0 is attribution-only and imposes no share-alike obligation, so it
+composes with the Apache-2.0 licensed code; it does not relicense the data.
+
+Full licence text: https://creativecommons.org/licenses/by/4.0/
+
+--------------------------------------------------------------------------------
+1. CLP hazard (H), supplementary (EUH) and precautionary (P) statement texts
+   Files: internal/core/clpdata/hpstatements-el-latest.json
+          internal/core/clpdata/hpstatements-en-latest.json
+--------------------------------------------------------------------------------
+
+  Source:   https://github.com/mhchem/hpstatements (clp/)
+  Upstream: Consolidated CLP legal texts from https://eur-lex.europa.eu
+  Copyright: (C) European Union, 1998-2026
+  Licence:  CC BY 4.0
+  Modified: No. Reproduced verbatim; parsed at build time by
+            internal/core/clp_embed.go.
+
+  Greek and English catalogues including combined P-codes. The curated entries
+  in internal/core/clp_phrases.go (official Annex III/IV wording, and wording
+  verified against a reference safety data sheet) override this base for
+  hand-verified codes.
+
+--------------------------------------------------------------------------------
+2. CLP Annex VI Table 3 harmonised classifications
+   File: annexvi/data/annexvi.json.gz
+--------------------------------------------------------------------------------
+
+  Sources:  https://publications.europa.eu/resource/celex/02008R1272-20260701
+            https://publications.europa.eu/resource/celex/32025R1222
+  Copyright: © European Union, 1998-2026
+  Licence:  CC BY 4.0
+  Modified: Yes. Table 3 rows were extracted from EUR-Lex XHTML, consolidation
+            markers and CAS footnotes were normalised, ATP23 changes were
+            assigned their 2027-02-01 application date, and the result was
+            encoded as columnar JSON with gzip compression.
+
+  Attribution: European Union law and publications, reused under Commission
+  Decision 2011/833/EU. The European Union does not endorse this project and
+  accepts no responsibility for this derived dataset.
+
+--------------------------------------------------------------------------------
+3. Cosmetics Annex III fragrance-allergen registry
+   File: allergens/data/allergens.json.gz
+--------------------------------------------------------------------------------
+
+  Source:   https://publications.europa.eu/resource/celex/02009R1223-20260501
+  Copyright: © European Union, 1998-2026
+  Licence:  CC BY 4.0
+  Modified: Yes. Rows carrying the individual ingredient-list labelling duty
+            were extracted from Annex III, XHTML rowspans were expanded,
+            grouped synonyms and CAS numbers were retained, and the result was
+            encoded as JSON with gzip compression.
+
+  Attribution: European Union law and publications, reused under Commission
+  Decision 2011/833/EU. The European Union does not endorse this project and
+  accepts no responsibility for this derived dataset.
+
+================================================================================
+SOURCES DELIBERATELY NOT USED
+================================================================================
+
+The European Chemicals Agency (ECHA) publishes a convenience spreadsheet of
+CLP Annex VI Table 3. The distributed registry does NOT use, redistribute, or
+derive from it. ECHA's download page states the table "should not be used for
+commercial activities or reproduced further", and ECHA's legal notice
+prohibits both the replication of substantial parts of its databases and
+systematic automated collection from its website. ECHA additionally asserts
+that CAS numbers on its site are the property of the American Chemical Society.
+
+Annex VI data in this module is instead derived from the consolidated text of
+Regulation (EC) No 1272/2008 published on EUR-Lex, which the European
+Commission makes available for commercial and non-commercial reuse under
+Commission Decision 2011/833/EU and licenses under CC BY 4.0.
+
+The optional `annexvi-crosscheck` command reads a copy supplied locally by an
+authorised user, compares it in memory, and prints counts. It performs no ECHA
+download and writes or publishes no ECHA-derived artifact.
+
+================================================================================
+DISCLAIMER
+================================================================================
+
+This software is not certified compliance software and does not constitute
+legal or regulatory advice. Only European Union legislation published in the
+Official Journal of the European Union is authentic; consolidated texts and
+the classifications derived from them by this software have no legal force.
+Verify every classification against the applicable legal text before relying
+on it for labelling, notification, or placing a product on the market.
