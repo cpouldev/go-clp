@@ -1,6 +1,7 @@
 # go-clp
 
 [![CI](https://github.com/cpouldev/go-clp/actions/workflows/ci.yml/badge.svg)](https://github.com/cpouldev/go-clp/actions/workflows/ci.yml)
+[![Latest release](https://img.shields.io/github/v/release/cpouldev/go-clp?sort=semver)](https://github.com/cpouldev/go-clp/releases)
 [![Go Reference](https://pkg.go.dev/badge/github.com/cpouldev/go-clp.svg)](https://pkg.go.dev/github.com/cpouldev/go-clp)
 [![Go 1.23+](https://img.shields.io/badge/Go-1.23%2B-00ADD8?logo=go)](./go.mod)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](./LICENSE)
@@ -186,7 +187,7 @@ Runnable examples also live in `example_test.go` and each public subpackage.
 ├── internal/core/         Classification engine and white-box tests
 ├── internal/*source/      EUR-Lex build-time parsers
 ├── cmd/                   Data generators and private comparison tool
-└── .github/workflows/     Public CI and private ECHA comparison
+└── .github/workflows/     Public CI, release automation, private ECHA comparison
 ```
 
 ## Development
@@ -206,6 +207,8 @@ go run ./cmd/annexvi-crosscheck -echa /secure/path/annex-vi.csv
 ```
 
 The command performs no network request and writes no ECHA-derived artifact.
+
+Release Please manages releases from Conventional Commits on `main`. Merge the generated release pull request to create the GitHub release and its `vMAJOR.MINOR.PATCH` tag; never edit versions or create release tags by hand. The workflow needs a repository Actions secret, `RELEASE_PLEASE_TOKEN`, that can write contents, issues, and pull requests. Release Please also generates `CHANGELOG.md`, tracks the version in `.release-please-manifest.json`, and reads its settings from `release-please-config.json`.
 
 ## Scope and Limitations
 

@@ -10,7 +10,7 @@
 
 ## Project Structure & Module Organization
 
-The root `clp` package is a stable public facade: `api.go` exposes the supported API and `doc.go` documents its scope. Deterministic classification rules and white-box tests live in `internal/core/`. Public companion packages are `annexvi/` for the embedded harmonised registry, `allergens/` for the advisory cosmetics registry, and `ufi/` for identifier generation. Build-time parsers and comparison logic belong under `internal/`; executable generators belong under `cmd/`. Embedded datasets are stored below each package's `data/` directory. Preserve attribution in `NOTICE` and `internal/core/clpdata/NOTICE.md`.
+The root `clp` package is the public facade and the only supported import path: `api.go` exposes the supported API and `doc.go` documents its scope. Deterministic classification rules and white-box tests live in `internal/core/`. Public companion packages are `annexvi/` for the embedded harmonised registry, `allergens/` for the advisory cosmetics registry, and `ufi/` for identifier generation. Build-time parsers and comparison logic belong under `internal/`; executable generators belong under `cmd/`. Embedded datasets are stored below each package's `data/` directory. Preserve attribution in `NOTICE` and `internal/core/clpdata/NOTICE.md`.
 
 ## Build, Test, and Development Commands
 
@@ -33,4 +33,8 @@ Use Go's `testing` package and keep tests beside their package as `*_test.go`. P
 
 ## Commit & Pull Request Guidelines
 
-No existing commit history establishes a convention. Use short imperative subjects, keep changes focused, and avoid mixing generated-data updates with unrelated refactors. Pull requests should explain behavioral and compliance impact, link the issue and authoritative source, list verification commands, and identify changed embedded data or attribution. Include screenshots only when downstream rendered output changes.
+Release Please derives versions from commits on `main`. Use Conventional Commits for every commit and for PR titles that may become squash commits: `fix(classifier): reject an invalid threshold` releases a patch, `feat(annexvi): add a registry query` a minor, and `feat(api)!: remove a public field` a major. A `BREAKING CHANGE: <description>` footer also marks a major release. Prefer squash merges, keep descriptions imperative and lower-case, and do not create release tags or edit versions manually.
+
+Merge the generated Release Please PR when the queued changes are ready to publish; that merge creates the GitHub release and its `vMAJOR.MINOR.PATCH` tag. Release Please owns `CHANGELOG.md` and the version in `.release-please-manifest.json`. Never edit either by hand. Because the manifest reads `0.0.0` and `bump-minor-pre-major` stays unset, the first breaking-change commit publishes `v1.0.0` rather than a `0.x` bump, so reach 1.0 deliberately. Go module paths carry the major version from v2 onward. Cutting `v2.0.0` therefore means adding the `/v2` suffix to the `module` line in `go.mod` and to every internal import; Release Please never touches them.
+
+Keep changes focused and avoid mixing generated-data updates with unrelated refactors. Pull requests should explain behavioral and compliance impact, link the issue and authoritative source, list verification commands, and identify changed embedded data or attribution. Include screenshots only when downstream rendered output changes.
